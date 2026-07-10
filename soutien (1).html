@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soutenir la chaîne</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+  :root{
+    --ink: #0A0A0A;
+    --paper: #F3E9D2;
+    --amber: #D4AF37;
+    --teal: #D4AF37;
+    --wave-blue: #C9A227;
+    --orange-brand: #D4AF37;
+    --line: rgba(212,175,55,0.25);
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  body{
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Work Sans', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Ticker */
+  .ticker-wrap{
+    background: var(--amber);
+    color: var(--ink);
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 3px solid var(--ink);
+    position: sticky;
+    top:0;
+    z-index: 10;
+  }
+  .ticker{
+    display: inline-block;
+    padding: 8px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    animation: scroll 22s linear infinite;
+  }
+  .ticker span{ margin: 0 2.5rem; }
+  @keyframes scroll{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker{ animation: none; }
+  }
+
+  main{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .eyebrow{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+  .eyebrow::before{ content: "● EN DIRECT · "; color: #e14b3d; }
+
+  h1{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.6rem, 8vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 1rem;
+  }
+  h1 .accent{ color: var(--amber); }
+
+  .lede{
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(246,244,239,0.78);
+    max-width: 52ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .min-badge{
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    background: rgba(246,244,239,0.06);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .min-badge .num{
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--amber);
+  }
+  .min-badge .label{
+    font-size: 0.8rem;
+    color: rgba(246,244,239,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .methods{
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .card{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 18px;
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+  }
+  .card::before{
+    content:"";
+    position: absolute;
+    left:0; top:0; bottom:0;
+    width: 6px;
+  }
+  .card.om::before{ background: var(--orange-brand); }
+  .card.wave::before{ background: var(--wave-blue); }
+
+  .card-top{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9rem;
+  }
+  .card-name{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .card.om .card-name{ color: var(--orange-brand); }
+  .card.wave .card-name{ color: var(--wave-blue); }
+
+  .chip{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: rgba(20,23,31,0.08);
+  }
+
+  .number-row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: rgba(20,23,31,0.04);
+    border: 1px dashed rgba(20,23,31,0.2);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+  }
+  .number{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .copy-btn{
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: opacity 0.15s ease;
+  }
+  .copy-btn:hover{ opacity: 0.85; }
+  .copy-btn:focus-visible{ outline: 2px solid var(--teal); outline-offset: 2px; }
+  .copy-btn.copied{ background: var(--teal); }
+
+  .name-note{
+    font-size: 0.8rem;
+    color: rgba(20,23,31,0.55);
+    margin-top: 0.6rem;
+  }
+
+  .howto{
+    border-top: 1px solid var(--line);
+    padding-top: 1.75rem;
+  }
+  .howto h2{
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+  .howto ol{
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    gap: 0.8rem;
+  }
+  .howto li{
+    counter-increment: step;
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: rgba(246,244,239,0.82);
+  }
+  .howto li::before{
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--ink);
+    background: var(--amber);
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  footer{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2.5rem;
+    font-size: 0.8rem;
+    color: rgba(246,244,239,0.4);
+    text-align: center;
+  }
+
+  .fill-me{
+    background: rgba(242,169,59,0.25);
+    outline: 1px dashed var(--amber);
+    padding: 0 3px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>MERCI À CEUX QUI SOUTIENNENT L'INFO INDÉPENDANTE</span>
+    <span>MERCI À CEUX QUI SOUTIENNENT L'INFO INDÉPENDANTE</span>
+    <span>MERCI À CEUX QUI SOUTIENNENT L'INFO INDÉPENDANTE</span>
+    <span>MERCI À CEUX QUI SOUTIENNENT L'INFO INDÉPENDANTE</span>
+  </div>
+</div>
+
+<main>
+  <p class="eyebrow">Soutien à la chaîne</p>
+  <h1>Aide-nous à<br><span class="accent">garder le micro allumé.</span></h1>
+  <p class="lede">
+    Chaque don, même petit, nous aide à continuer de couvrir l'actualité sans dépendre de personne d'autre que vous.
+    Choisis Orange Money ou Wave, c'est toi qui décide.
+  </p>
+
+  <div class="min-badge">
+    <span class="num">200 FCFA</span>
+    <span class="label">montant minimum</span>
+  </div>
+
+  <div class="methods">
+    <div class="card om">
+      <div class="card-top">
+        <span class="card-name">Orange Money</span>
+        <span class="chip">Dépôt direct</span>
+      </div>
+      <div class="number-row">
+        <span class="number" id="om-number">+223 85 45 31 51</span>
+        <button class="copy-btn" onclick="copyNumber('om-number', this)">Copier</button>
+      </div>
+      <p class="name-note">Nom du compte : <span class="fill-me">Ton Nom Complet</span></p>
+    </div>
+
+    <div class="card wave">
+      <div class="card-top">
+        <span class="card-name">Wave</span>
+        <span class="chip">Dépôt direct</span>
+      </div>
+      <div class="number-row">
+        <span class="number" id="wave-number">+223 85 45 31 51</span>
+        <button class="copy-btn" onclick="copyNumber('wave-number', this)">Copier</button>
+      </div>
+      <p class="name-note">Nom du compte : <span class="fill-me">Ton Nom Complet</span></p>
+    </div>
+  </div>
+
+  <div class="howto">
+    <h2>Comment faire</h2>
+    <ol>
+      <li>Choisis Orange Money ou Wave selon ce que tu as.</li>
+      <li>Copie le numéro avec le bouton, ou ouvre directement ton appli.</li>
+      <li>Envoie 200 FCFA ou plus — tout soutien compte.</li>
+      <li>C'est tout. Merci d'avance pour ton geste 🙏</li>
+    </ol>
+  </div>
+</main>
+
+<footer>
+  Page créée pour soutenir la chaîne. Aucune donnée personnelle n'est collectée ici.
+</footer>
+
+<script>
+function copyNumber(id, btn){
+  const text = document.getElementById(id).innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.textContent;
+    btn.textContent = "Copié ✓";
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 1600);
+  });
+}
+</script>
+
+</body>
+</html>
